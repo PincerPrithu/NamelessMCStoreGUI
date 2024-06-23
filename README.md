@@ -87,32 +87,11 @@ messages:
   no-gui-icons: "&cThe GUI icons are not set up correctly."
 ```
 
-### Registering CustomItem Class
-
-Ensure `CustomItem` is registered for serialization in your main plugin class:
-
-```java
-import org.bukkit.configuration.serialization.ConfigurationSerialization;
-import org.bukkit.plugin.java.JavaPlugin;
-
-public class NamelessMCStoreGUI extends JavaPlugin {
-    @Override
-    public void onEnable() {
-        // Register CustomItem for configuration serialization
-        ConfigurationSerialization.registerClass(CustomItem.class);
-
-        // Other initialization code...
-    }
-
-    // Other methods...
-}
-```
-
 ## Usage
 
 ### Commands
 
-- **/openstore**: Opens the store GUI for the player.
+- **/webstore**: Opens the store GUI for the player.
 
 ### GUI Navigation
 
@@ -122,22 +101,6 @@ public class NamelessMCStoreGUI extends JavaPlugin {
 - **Category Item**: Represents a store category. Clicking it will show the products in that category.
 - **Product Item**: Represents a product. Clicking it will provide more information and a link to view the product on the webstore.
 
-## Development
-
-### Setting Up the Development Environment
-
-1. **Clone the Repository**:
-   ```sh
-   git clone https://github.com/your-repo/NamelessMCStoreGUI.git
-   cd NamelessMCStoreGUI
-   ```
-
-2. **Import the Project**:
-   - Open the project in your preferred IDE (e.g., IntelliJ IDEA).
-   - Ensure you have the Spigot API and other dependencies set up in your development environment.
-
-3. **Build the Plugin**:
-   - Use Maven or Gradle to build the project and generate the JAR file.
 
 ### Contributions
 
@@ -145,8 +108,8 @@ Contributions are welcome! Please open an issue or submit a pull request with yo
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
 
 ---
 
-Thank you for using NamelessMCStoreGUI! If you have any questions or need further assistance, feel free to open an issue on GitHub.
+Thank you for using NamelessMCStoreGUI! If you have any questions or need further assistance, feel free to open an issue on GitHub or join Discord @ https://discord.gg/xG2EJ6sjBj.
