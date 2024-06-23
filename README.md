@@ -14,7 +14,7 @@ NamelessMCStoreGUI is a Minecraft plugin that provides a customizable graphical 
 ## Installation
 
 1. **Download the Plugin:**
-   - Download the latest version of the NamelessMCStoreGUI plugin from the [releases](https://github.com/your-repo/releases](https://github.com/PincerPrithu/NamelessMCStoreGUI/releases) page.
+   - Download the latest version of the NamelessMCStoreGUI plugin from the [releases](https://github.com/PincerPrithu/NamelessMCStoreGUI/releases) page.
 
 2. **Install the Plugin:**
    - Place the downloaded JAR file into your server's `plugins` directory.
