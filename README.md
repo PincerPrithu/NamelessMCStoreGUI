@@ -25,7 +25,7 @@ NamelessMCStoreGUI is a Minecraft plugin that provides a customizable graphical 
 4. **Add API details:**
    - Edit the `config.yml` file in the `plugins/NamelessMCStoreGUI` directory. You must set API key, API URL and Store URL.
    - API Key & URL can be found by going to your NamelessMC website panel > Configuration > API
-   - Store URL is the home page of your NamelessMC store. Ex: https://yourstore.com/**store**
+   - Store URL is the home page of your NamelessMC store. Ex: https://yourstore.com/store
      
 5. **Reload the Plugin:**
    - Use `/webstore reload` in your console or ingame (permission: namelessmcgui.admin)
