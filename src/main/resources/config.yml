@@ -1,0 +1,49 @@
+api-credentials:
+  api-url: "https://mywebsite.com/api/v2"
+  api-key: "supersecret"
+  timeout-seconds: 15
+
+settings:
+  store-url: "https://myminecraftserver.com/store"
+  primary-color: "GREEN"
+
+# The following are the default settings for the GUI
+gui-icons:
+  # What fills the edges of the GUI
+  border-item:
+    display-name: " "
+    lore: [ ]
+    material: "GRAY_STAINED_GLASS_PANE"
+    quantity: 1
+  # Back Button
+  back-item:
+      display-name: "&c&lBack to Categories"
+      lore: [ ]
+      material: "RED_STAINED_GLASS_PANE"
+      quantity: 1
+  # Exit Button
+  close-item:
+    display-name: "&c&lClose Menu"
+    lore: [ ]
+    material: "RED_STAINED_GLASS_PANE"
+    quantity: 1
+  # Category Item (Variables: {category_name}, {category_id}, {category_description}, {number_of_products})
+  category-item:
+      display-name: "&e&l{category_name}"
+      lore: [ "&7{number_of_products} Products" ]
+      material: "CHEST"
+      quantity: 1
+  # Product Item (Variables: {product_name}, {product_price}, {product_description}, {product_id}, {product_url})
+  product-item:
+      display-name: "&a&l{product_name} &e(${product_price})"
+      lore:
+          - "&7Click to view this item on our web store"
+      material: "CHEST_MINECART"
+      quantity: 1
+
+messages:
+    no-permission: "&cYou do not have permission to use this command."
+    no-products: "&cThere are no products in this category."
+    no-webstore: "&cThe webstore is currently unavailable."
+    no-store-url: "&cThe store URL is not set up correctly."
+    no-gui-icons: "&cThe GUI icons are not set up correctly."

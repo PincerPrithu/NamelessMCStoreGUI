@@ -11,17 +11,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import static me.pincer.namelessmcstoregui.objects.Category.getCatById;
+import static me.pincer.namelessmcstoregui.NamelessMCStoreGUI.log;
 
 public class Product {
-    public static HashMap<Category, List<Product>> productMap = new HashMap<>();
+    @Getter
+    static List<Product> uncategorizedProducts = new ArrayList<>();
     @Getter
     private final int id;
     @Getter
     private final int categoryId;
+    @Getter
+    Category category;
     @Getter
     private final float price;
     @Getter
@@ -38,6 +40,12 @@ public class Product {
         this.disabled = disabled;
         this.categoryId = categoryId;
         this.price = price;
+
+        try {
+            Category.getCatById(categoryId).addProduct(this);
+        } catch (Exception e) {
+            uncategorizedProducts.add(this);
+        }
     }
 
     public static void fetchProducts() {
@@ -75,19 +83,11 @@ public class Product {
                         boolean hidden = data.getBoolean("hidden");
                         boolean disabled = data.getBoolean("disabled");
 
-                        if (productMap.containsKey(getCatById(catid))) {
-                            List<Product> products = productMap.get(getCatById(catid));
-                            products.add(new Product(id, catid, price, name, hidden, disabled));
-                            productMap.put(getCatById(catid), products);
-                        } else {
-                            List<Product> products = new ArrayList<>();
-                            products.add(new Product(id, catid, price, name, hidden, disabled));
-                            productMap.put(getCatById(catid), products);
-                        }
-
+                        Product product = new Product(id, catid, price, name, hidden, disabled);
                     }
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    log("Failed to fetch Products from API:" + e.getMessage());
+                    log("Please check your API credentials in the config.yml file and use /webstore reload to try again.");
                 }
             }
         }.runTaskAsynchronously(NamelessMCStoreGUI.getInstance());

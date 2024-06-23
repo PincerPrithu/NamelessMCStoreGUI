@@ -1,10 +1,11 @@
 name: NamelessMCStoreGUI
 version: '${project.version}'
 main: me.pincer.namelessmcstoregui.NamelessMCStoreGUI
-api-version: 1.14
+api-version: 1.13
 prefix: WebStore GUI
 authors: [ PincerPrithu ]
 description: A seemless way to integrate your webstore ingame
+load: POSTWORLD
 commands:
   webstore:
     usage: /webstore

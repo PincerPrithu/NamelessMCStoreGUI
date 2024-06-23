@@ -13,8 +13,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.pincer.namelessmcstoregui.NamelessMCStoreGUI.log;
+
 public class Category {
-    public static List<Category> categories = new ArrayList<>();
+    @Getter
+    private final static List<Category> categories = new ArrayList<>();
     @Getter
     private final int id;
     @Getter
@@ -23,12 +26,14 @@ public class Category {
     private final boolean hidden;
     @Getter
     private final boolean disabled;
-
+    @Getter
+    private final List<Product> products = new ArrayList<>();
     public Category(int id, String name, boolean hidden, boolean disabled) {
         this.id = id;
         this.name = name;
         this.hidden = hidden;
         this.disabled = disabled;
+        categories.add(this);
     }
 
     public static void fetchCategories() {
@@ -63,12 +68,12 @@ public class Category {
                         String name = data.getString("name");
                         boolean hidden = data.getBoolean("hidden");
                         boolean disabled = data.getBoolean("disabled");
-
-                        categories.add(new Category(id, name, hidden, disabled));
-
+                        new Category(id, name, hidden, disabled);
                     }
+                    Product.fetchProducts();
                 } catch (Exception e) {
-                    throw new RuntimeException(e);
+                    log("Failed to fetch categories from API:" + e.getMessage());
+                    log("Please check your API credentials in the config.yml file and use /webstore reload to try again.");
                 }
             }
         }.runTaskAsynchronously(NamelessMCStoreGUI.getInstance());
@@ -82,13 +87,7 @@ public class Category {
         }
         return toReturn;
     }
-    public static Category getCatByName(String name) {
-        Category toReturn = null;
-        for (Category cat : categories) {
-            if (cat.getName().equals(name)) {
-                toReturn = cat;
-            }
-        }
-        return toReturn;
+    public void addProduct(Product product) {
+        products.add(product);
     }
 }
